@@ -67,11 +67,11 @@ $MODBINPATH/mkdtimg dump $MODDTBOPATH/dtbo.img -b $MODDTBOPATH/dtbo.dtbo -o /dev
 # 获取机型信息
 MODEL=$($MODBINPATH/fdtget $MODDTBOPATH/dtbo.dtbo.0 / model)
 
-if [ "$MODEL" == "Sony Mobile Communications. PDX-203(KONA)" ]; then
+if [[ "$MODEL" =~ "PDX-203" ]]; then
   ui_print "**  当前机型为Xperia 1 II             **"
   $MODBINPATH/fdtoverlay -i $MODDTBOPATH/dtbo.dtbo.0 -o $MODDTBOPATH/new_dtbo.dtbo $MODDTBOPATH/overlay_pdx203.dtbo
   rm $MODPATH/system/product/overlay/FrameworkRes-PDX206-Overlay.apk
-elif [ "$MODEL" == "Sony Mobile Communications. PDX-206(KONA)" ]; then
+elif [[ "$MODEL" =~ "PDX-206" ]]; then
   ui_print "**  当前机型为Xperia 5 II             **"
   $MODBINPATH/fdtoverlay -i $MODDTBOPATH/dtbo.dtbo.0 -o $MODDTBOPATH/new_dtbo.dtbo $MODDTBOPATH/overlay_pdx206.dtbo
   rm $MODPATH/system/product/overlay/FrameworkRes-PDX203-Overlay.apk
