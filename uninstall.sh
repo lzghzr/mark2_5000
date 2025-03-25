@@ -1,5 +1,5 @@
 # 安装时创建
-DIRPATH=/data/adb/mark2_5000 
+DIRPATH=/data/adb/mark2_5000
 
 # 设置路径
 MODBINPATH=$DIRPATH/bin
@@ -27,10 +27,13 @@ $MODBINPATH/mkdtimg dump $MODDTBOPATH/dtbo.img -b $MODDTBOPATH/dtbo.dtbo -o /dev
 # 获取机型信息
 MODEL=$($MODBINPATH/fdtget $MODDTBOPATH/dtbo.dtbo.0 / model)
 
-if [ "$MODEL" == "Sony Mobile Communications. PDX-203(KONA)" ]; then
+if [[ "$MODEL" =~ "PDX-203" ]]; then
   echo "当前机型为Xperia 1 II"
   $MODBINPATH/fdtoverlay -i $MODDTBOPATH/dtbo.dtbo.0 -o $MODDTBOPATH/new_dtbo.dtbo $MODDTBOPATH/origin_pdx203.dtbo
-elif [ "$MODEL" == "Sony Mobile Communications. PDX-206(KONA)" ]; then
+elif [[ "$MODEL" =~ "PDX-204" ]]; then
+  echo "当前机型为Xperia Pro"
+  $MODBINPATH/fdtoverlay -i $MODDTBOPATH/dtbo.dtbo.0 -o $MODDTBOPATH/new_dtbo.dtbo $MODDTBOPATH/origin_pdx203.dtbo
+elif [[ "$MODEL" =~ "PDX-206" ]]; then
   echo "当前机型为Xperia 5 II"
   $MODBINPATH/fdtoverlay -i $MODDTBOPATH/dtbo.dtbo.0 -o $MODDTBOPATH/new_dtbo.dtbo $MODDTBOPATH/origin_pdx206.dtbo
 else

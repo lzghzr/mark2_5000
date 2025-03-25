@@ -1,7 +1,7 @@
 id=mark2_5000
 name=Xperia II解容5000 mAh
-version=v3
-versionCode=3
+version=v4
+versionCode=4
 author=lzghzr
-description=为更换四代电池的Xperia 1 II, Xperia 5 II解锁电池容量到 5000 mAh
+description=为更换四代电池的Xperia 1 II, Xperia 5 II, Xperia Pro解锁电池容量到 5000 mAh
 updateJson=https://github.com/lzghzr/mark2_5000/raw/main/update.json
